@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <BodyPartDef>
+    <defName>Sentinel_Heart</defName>
+    <label>heart</label>
+    <hitPoints>30</hitPoints>
+    <permanentInjuryChanceFactor>0.08</permanentInjuryChanceFactor>
+    <bleedRate>5</bleedRate>
+    <skinCovered>false</skinCovered>
+    <tags>
+      <li>BloodPumpingSource</li>
+      <li>BloodFiltrationSource</li>
+      <li>MetabolismSource</li>
+      <li>BreathingSource</li>
+    </tags>
+  </BodyPartDef> -->
+
+  <Sentinel_Claws.label>когти</Sentinel_Claws.label>
+  <Sentinel_Teeth.label>зубы</Sentinel_Teeth.label>
+
+
+</LanguageData>
