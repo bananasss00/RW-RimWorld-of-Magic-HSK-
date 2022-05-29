@@ -14,7 +14,7 @@
 				<xpath>Defs/ThingDef[defName="TM_Demonscale"]/stuffProps/categories</xpath>
 				<value>
 					<li>Metallic_Weapon</li>
-					<li>Steeled</li>
+					<li>Metallic</li>
 				</value>
 			</li>
 			
@@ -68,7 +68,7 @@
 				<xpath>Defs/ThingDef[defName="TM_Arcalleum"]/stuffProps/categories</xpath>
 				<value>
 					<li>Metallic_Weapon</li>
-					<li>Steeled</li>
+					<li>Metallic</li>
 				</value>
 			</li>
 			

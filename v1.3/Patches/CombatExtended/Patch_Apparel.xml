@@ -262,7 +262,7 @@
 				<xpath>Defs/ThingDef[defName="AncientMail"]/stuffCategories</xpath>
 				<value>
 					<stuffCategories>
-						<li>Steeled</li>
+						<li>Metallic</li>
 					</stuffCategories>
 				</value>
 			</li>-->
@@ -290,7 +290,7 @@
 				<xpath>Defs/ThingDef[defName="RoyalHelm"]/stuffCategories</xpath>
 				<value>
 					<stuffCategories>
-						<li>Steeled</li>
+						<li>Metallic</li>
 					</stuffCategories>
 				</value>
 			</li>
@@ -324,7 +324,7 @@
 				<xpath>Defs/ThingDef[defName="ParagonHelm"]/stuffCategories</xpath>
 				<value>
 					<stuffCategories>
-						<li>Steeled</li>
+						<li>Metallic</li>
 					</stuffCategories>
 				</value>
 			</li>

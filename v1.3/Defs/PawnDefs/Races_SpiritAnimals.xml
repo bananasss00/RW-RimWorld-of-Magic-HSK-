@@ -143,7 +143,7 @@
 	  <baseBodySize>1</baseBodySize>
       <baseHungerRate>1</baseHungerRate>
       <foodType>CarnivoreAnimal</foodType>
-      <leatherDef>Leather_Bear</leatherDef>
+      <leatherDef>Leather_Light</leatherDef>
       <nuzzleMtbHours>600</nuzzleMtbHours>
       <gestationPeriodDays>30</gestationPeriodDays>
       <litterSizeCurve>
