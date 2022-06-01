@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+    <mods>
+		<li>Core SK</li>
+    </mods>
+		<match Class="PatchOperationSequence">
+		<operations>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[
+						statBases/MeatAmount="0" and not(race/useMeatFrom) or
+						defName="TM_GreaterMinionR"
+					]/race</xpath>
+				<value>
+					<useMeatFrom>TM_MinionR</useMeatFrom>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[
+						defName="TM_Dire_WolfR" or
+						@Name="TM_Base_SpiritAnimal"
+					]/race</xpath>
+				<value>
+					<useMeatFrom>Elephant</useMeatFrom>
+				</value>
+			</li>
+			
+		</operations>
+		</match>
+	</Operation>
+	
+	
+	
+</Patch>
