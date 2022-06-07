@@ -178,7 +178,7 @@
   <TM_SuperSoldier.degreeDatas.0.description>[PAWN_nameDef] - это хорошо обученный солдат, специализирующийся на пистолетах, дробовиках или винтовках. [PAWN_possessive] специализация оружия дополняется стандартным набором боевой подготовки. Суперсолдаты обучены быть агрессивными и считают насилие естественным решением любого спора.</TM_SuperSoldier.degreeDatas.0.description>
 
   <TM_Apothecary.degreeDatas.0.label>Аптекарь</TM_Apothecary.degreeDatas.0.label>
-  <TM_Apothecary.degreeDatas.0.description>[PAWN_nameDef] - аптекарь, обученный приготовлению лекарств, бальзамов, настоек и лекарств. Профессия [PAWN_possessive] демонстрирует строгую дисциплину и самоотверженность, а [PAWN_pronoun] научился применять дисциплину [PAWN_possessive] к более общим физическим навыкам. С обучением [Pawn_proonoun] может стать способным во многих боевых приемах, чтобы увеличить навык [PAWN_possessive] в травах.</TM_Apothecary.degreeDatas.0.description>
+  <TM_Apothecary.degreeDatas.0.description>[PAWN_nameDef] - аптекарь, обученный приготовлению лекарств, бальзамов, настоек и лекарств. Профессия [PAWN_possessive] демонстрирует строгую дисциплину и самоотверженность, а [PAWN_pronoun] научился применять дисциплину [PAWN_possessive] к более общим физическим навыкам. С обучением [PAWN_pronoun] может стать способным во многих боевых приемах, чтобы увеличить навык [PAWN_possessive] в травах.</TM_Apothecary.degreeDatas.0.description>
 
 
 </LanguageData>
