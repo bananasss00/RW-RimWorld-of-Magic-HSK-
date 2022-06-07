@@ -10,7 +10,7 @@
 			
 			<li Class="PatchOperationAdd">
 				<xpath>Defs/ThingDef[
-						statBases/MeatAmount="0" and not(race/useMeatFrom) or
+						statBases/MeatAmount="0" and not(race/useMeatFrom) and starts-with(race/thinkTreeMain, "TM_") or
 						defName="TM_GreaterMinionR"
 					]/race</xpath>
 				<value>
