@@ -1022,7 +1022,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <associatedMemes>
       <li>TM_Transcendent</li>
     </associatedMemes>
@@ -1047,7 +1046,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <associatedMemes>
       <li>TM_Transcendent</li>
     </associatedMemes>
@@ -1072,7 +1070,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <associatedMemes>
       <li>TM_Transcendent</li>
     </associatedMemes>
