@@ -40,6 +40,9 @@
 	 	<Reference Include="..\..\..\Combat Extended\Assemblies\CombatExtended.dll">
 		  <Private>False</Private>
  	    </Reference>
+	 	<Reference Include="..\..\v1.3\Assemblies\TorannMagic.dll">
+		  <Private>False</Private>
+ 	    </Reference>
 		
 		<Publicize Include="CombatExtended" />
 	</ItemGroup>
