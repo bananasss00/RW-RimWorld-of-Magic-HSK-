@@ -4,4 +4,4 @@ REM remove unnecessary assemblies
 DEL .\*\Assemblies\*.*
 
 REM build dll
-dotnet build .vscode
+dotnet build .vscode -c Release

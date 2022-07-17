@@ -23,7 +23,8 @@ namespace RimWorldOfMagic.Patch
             h.PatchAll();
         }
     }
-
+    
+    #region CE_NoDrop_DestroyOnDrop_Items
     static class CE_NoDrop_DestroyOnDrop_Items
     {
         public static void Patch(Harmony h)
@@ -61,6 +62,9 @@ namespace RimWorldOfMagic.Patch
             }
         }
     }
+    #endregion CE_NoDrop_DestroyOnDrop_Items
+
+    #region Technomancer and SuperSoldier: CE Fixes
 
     [HarmonyPatch(typeof(TM_Action), nameof(TM_Action.DoAction_TechnoWeaponCopy))]
     static class CE_DoAction_TechnoWeaponCopy
@@ -344,4 +348,52 @@ namespace RimWorldOfMagic.Patch
             }
         }
     }
+
+    #endregion Technomancer and SuperSoldier: CE Fixes
+
+    #region Chronomancer: VSE - WinstonWaves Fixes
+
+    [HarmonyPatch(typeof(TorannMagicMod.IncidentWorker_TryExecute_Prefix_Patch), nameof(TorannMagicMod.IncidentWorker_TryExecute_Prefix_Patch.Prefix))]
+    static class Chronomancer_WinstoWaves_Fix
+    {
+        static bool Prepare() => ModLister.GetModWithIdentifier("vanillastorytellersexpanded.winstonwave") != null;
+
+        static bool IsVseWWRaid(IncidentParms parms)
+        {
+            if (Find.Storyteller.def.defName == "VSE_WinstonWave")
+            {
+                Map map = (Map)parms.target;
+                MapComponent component = map.components.FirstOrDefault(x => x.GetType().Name == "MapComponent_Winston");
+                if (component != null && Traverse.Create(component) is Traverse c &&
+                    (c.Field("nextRaidInfo").Field("incidentParms").GetValue<IncidentParms>().pawnGroupMakerSeed == parms.pawnGroupMakerSeed ||
+                     c.Field("nextRaidInfo").Field("reinforcementSeed").GetValue<int>() == parms.pawnGroupMakerSeed))
+                {
+                    Log.Message($"Block Chronomancer prediction ability for WinstonWaves raid!");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        [HarmonyTranspiler]
+        static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator generator)
+        {
+            Label originalCodeLabel = generator.DefineLabel();
+            instructions.First().labels.Add(originalCodeLabel);
+
+            CodeInstruction[] wwChecker = {
+                // if (IsVseWwRaid(parms)) return true
+                new CodeInstruction(OpCodes.Ldarg_1),
+                new CodeInstruction(OpCodes.Ldind_Ref),
+                new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(Chronomancer_WinstoWaves_Fix), nameof(IsVseWWRaid))),
+                new CodeInstruction(OpCodes.Brfalse_S, originalCodeLabel),
+                new CodeInstruction(OpCodes.Ldc_I4_1),
+                new CodeInstruction(OpCodes.Ret),
+            };
+
+            return wwChecker.Union(instructions);
+        }
+    }
+
+    #endregion Chronomancer VSE - WinstonWaves Fixes
 }
