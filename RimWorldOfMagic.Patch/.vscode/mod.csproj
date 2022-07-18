@@ -37,7 +37,7 @@
 		  <PackageReference Include="Lib.Harmony" Version="2.2.1">
 			<ExcludeAssets>runtime</ExcludeAssets>
 		  </PackageReference>
-	 	<Reference Include="..\..\..\Combat Extended\Assemblies\CombatExtended.dll">
+	 	<Reference Include="..\..\..\Combat*Extended\Assemblies\CombatExtended.dll">
 		  <Private>False</Private>
  	    </Reference>
 	 	<Reference Include="..\..\v1.3\Assemblies\TorannMagic.dll">

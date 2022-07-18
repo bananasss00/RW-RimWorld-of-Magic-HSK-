@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using CombatExtended;
@@ -21,6 +22,41 @@ namespace RimWorldOfMagic.Patch
                 CE_NoDrop_DestroyOnDrop_Items.Patch(h);
             }
             h.PatchAll();
+
+            // Supersoldier dump
+            // LongEventHandler.ExecuteWhenFinished(() =>
+            // {
+            //     var pistolList = WeaponCategoryList.Named("TM_Category_Pistols").weaponDefNames;
+            //     var rifleList = WeaponCategoryList.Named("TM_Category_Rifles").weaponDefNames;
+            //     var shotgunList = WeaponCategoryList.Named("TM_Category_Shotguns").weaponDefNames;
+
+            //     List<string> pistols = new(), rifles = new(), shotguns = new(), undefined = new();
+            //     var rangedWeapons = DefDatabase<ThingDef>.AllDefs.Where(x => x.IsRangedWeapon && x.weaponTags?.Contains("TurretGun") != true);
+            //     foreach (var weapon in rangedWeapons)
+            //     {
+            //         if (pistolList.Contains(weapon.defName))
+            //             pistols.Add($"  <li>{weapon.defName}</li> <!-- {weapon.label} -->");
+            //         else if (rifleList.Contains(weapon.defName))
+            //             rifles.Add($"  <li>{weapon.defName}</li> <!-- {weapon.label} -->");
+            //         else if (shotgunList.Contains(weapon.defName))
+            //             shotguns.Add($"  <li>{weapon.defName}</li> <!-- {weapon.label} -->");
+            //         else if (!weapon.defName.ToLower().Contains("shotgun") &&
+            //                  !((weapon.defName.ToLower().Contains("rifle") || weapon.defName.Contains("LMG")) && !weapon.defName.ToLower().Contains("sniper")) &&
+            //                  !weapon.defName.ToLower().Contains("pistol") &&  !weapon.defName.ToLower().Contains("revolver") && !weapon.defName.Contains("SMG"))
+            //             undefined.Add($"  <li>{weapon.defName}</li> <!-- {weapon.label} -->");
+            //     }
+
+            //     List<string> allWeapons = new();
+            //     allWeapons.Add("undefined:");
+            //     allWeapons.AddRange(undefined);
+            //     allWeapons.Add("\n\npistols:");
+            //     allWeapons.AddRange(pistols);
+            //     allWeapons.Add("\n\nrifles:");
+            //     allWeapons.AddRange(rifles);
+            //     allWeapons.Add("\n\nshotguns:");
+            //     allWeapons.AddRange(shotguns);
+            //     File.WriteAllLines("SuperSoldier_Weapons_Cat.txt", allWeapons);
+            // });
         }
     }
     
