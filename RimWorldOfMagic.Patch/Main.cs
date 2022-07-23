@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using CombatExtended;
 using HarmonyLib;
 using RimWorld;
 using TorannMagic;
+using TorannMagic.Thoughts;
 using UnityEngine;
 using Verse;
 
@@ -59,6 +62,50 @@ namespace RimWorldOfMagic.Patch
             // });
         }
     }
+	
+	#region Inspiration_Null_checks
+    [HarmonyPatch]
+    static class Inspiration_Null_checks
+    {
+        static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return AccessTools.Method(typeof(Inspiration_MagicUser), "InspirationCanOccur");
+            yield return AccessTools.Method(typeof(Inspiration_MightUser), "InspirationCanOccur");
+        }
+
+        [HarmonyTranspiler]
+        static IEnumerable<CodeInstruction> InspirationFix(MethodBase __originalMethod, IEnumerable<CodeInstruction> instructions, ILGenerator ilGen)
+		{
+			var code = instructions.ToList();
+
+			var is___UserMethod = __originalMethod.DeclaringType.Name == "Inspiration_MagicUser" ?
+				AccessTools.Method("TorannMagic.CompAbilityUserMagic:get_IsMagicUser") :
+				AccessTools.Method("TorannMagic.CompAbilityUserMight:get_IsMightUser");
+
+            int setFlagIdx = code.FindIndex(x => x.Calls(is___UserMethod)) + 1;
+			if (setFlagIdx == -1) throw new Exception("Can't find isMagicUserMethod");
+
+			var defCodeLabel = ilGen.DefineLabel();
+			var ifCompNullLabel = ilGen.DefineLabel();
+			code[setFlagIdx].labels.Add(defCodeLabel);
+
+			foreach (var ci in instructions)
+			{
+				// Add null check:
+				//   bool isMagicUser = comp.IsMagicUser; => bool isMagicUser = comp != null && comp.IsMagicUser;
+				if (ci.Calls(is___UserMethod))
+				{
+					yield return new CodeInstruction(OpCodes.Brfalse_S, ifCompNullLabel);
+					yield return new CodeInstruction(OpCodes.Ldloc_2);
+					yield return new CodeInstruction(OpCodes.Callvirt, is___UserMethod);
+					yield return new CodeInstruction(OpCodes.Br_S, defCodeLabel);
+					yield return new CodeInstruction(OpCodes.Ldc_I4_0).WithLabels(ifCompNullLabel);
+				}
+				else yield return ci;
+			}
+		}
+    }
+    #endregion Inspiration_Null_checks
     
     #region CE_NoDrop_DestroyOnDrop_Items
     static class CE_NoDrop_DestroyOnDrop_Items
